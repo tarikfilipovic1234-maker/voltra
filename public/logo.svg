@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" fill="none">
+  <defs>
+    <linearGradient id="voltra-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C5FF00"/>
+      <stop offset="55%" stop-color="#00FF41"/>
+      <stop offset="100%" stop-color="#00802B"/>
+    </linearGradient>
+    <filter id="voltra-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Three vertical voltage bolts -->
+  <g filter="url(#voltra-glow)">
+    <!-- left bolt -->
+    <path
+      d="M 35 10 L 70 95 L 50 100 L 80 220 L 55 130 L 75 125 Z"
+      fill="url(#voltra-grad)"
+      stroke="#000"
+      stroke-width="3"
+      stroke-linejoin="miter"
+    />
+    <!-- center bolt (tallest / boldest) -->
+    <path
+      d="M 100 5 L 135 100 L 110 108 L 145 230 L 95 135 L 125 125 L 90 35 Z"
+      fill="url(#voltra-grad)"
+      stroke="#000"
+      stroke-width="3.5"
+      stroke-linejoin="miter"
+    />
+    <!-- right bolt -->
+    <path
+      d="M 165 10 L 195 95 L 175 100 L 200 220 L 175 130 L 195 125 Z"
+      fill="url(#voltra-grad)"
+      stroke="#000"
+      stroke-width="3"
+      stroke-linejoin="miter"
+    />
+  </g>
+</svg>

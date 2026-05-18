@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "products": "Produtos",
+    "athletes": "Atletas",
+    "voltage": "Voltagem",
+    "storeLocator": "Lojas",
+    "findCan": "Achar uma Lata"
+  },
+  "hero": {
+    "badge": "Nova fórmula · Drop 016 no ar",
+    "headline1": "Solta",
+    "headline2": "a",
+    "headline3": "Voltagem",
+    "description": "Uma mistura de alta voltagem com os ingredientes certos na amplitude certa — a carga que só a VOLTRA entrega. Rasgue uma lata. A bebida energética mais barulhenta do planeta.",
+    "cta1": "Ver a Linha",
+    "cta2": "Assistir o Filme",
+    "since": "Desde 2002",
+    "caffeine": "Cafeína",
+    "sugar": "Açúcar",
+    "calories": "Calorias",
+    "bvits": "Vitaminas B",
+    "nutrition": "Nutrição · 473ml",
+    "status": "Status",
+    "statusReady": "Pronta para Servir"
+  },
+  "lineup": {
+    "section": "§ 01 / Linha",
+    "title": "A Linha.",
+    "subtitle": "Seis formas de acordar alto."
+  },
+  "stats": {
+    "section": "§ 02 / Dentro da Lata",
+    "title1": "A fórmula que",
+    "title2": "fez barulho."
+  },
+  "athletes": {
+    "section": "§ 03 / O Crew",
+    "title": "Patrocinamos barulho.",
+    "description": "Da terra à mesa, do ápice ao after-show — quem quebra coisas usa o raio."
+  },
+  "manifesto": {
+    "section": "§ 04 / Manifesto",
+    "title1": "Entra",
+    "title2": "no crew.",
+    "description": "Deixa teu email e a gente manda os lançamentos, drops de atletas, datas de turnê e notas de laboratório das 3 da manhã. Sem spam. Só rugido.",
+    "cta": "Quero Entrar",
+    "placeholder": "voce@voltra.gg",
+    "nospam": "Sem spam. Só barulho.",
+    "pack": "no crew",
+    "unsubscribe": "Cancela a hora que quiser."
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados.",
+    "status": "Todos os Sistemas no Talo"
+  },
+  "search": {
+    "title": "Buscar",
+    "placeholder": "Produtos, atletas, artigos…",
+    "results": "resultados",
+    "noResults": "Nada encontrado. Tenta uma palavra mais alta.",
+    "filterBy": "Filtrar por",
+    "sport": "Esporte",
+    "region": "Região",
+    "category": "Categoria",
+    "type": "Tipo",
+    "all": "Todos",
+    "products": "Produtos",
+    "athletes": "Atletas",
+    "articles": "Artigos",
+    "videos": "Vídeos"
+  },
+  "auth": {
+    "signIn": "Entrar",
+    "signUp": "Criar Conta",
+    "signOut": "Sair",
+    "email": "Email",
+    "password": "Senha",
+    "name": "Nome",
+    "or": "ou",
+    "alreadyHave": "Já tem conta?",
+    "needAccount": "Precisa de conta?",
+    "continueWith": "Continuar com"
+  },
+  "profile": {
+    "title": "Seu Perfil",
+    "greeting": "Bem-vindo de volta",
+    "member": "Membro desde",
+    "tier": "Nível",
+    "points": "Volts",
+    "region": "Região",
+    "locale": "Idioma",
+    "newsletter": "Newsletter",
+    "save": "Salvar",
+    "saved": "Salvo"
+  },
+  "admin": {
+    "dashboard": "Painel",
+    "athletes": "Atletas",
+    "products": "Produtos",
+    "videos": "Vídeos",
+    "articles": "Artigos",
+    "events": "Eventos",
+    "users": "Usuários",
+    "create": "Criar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "back": "Voltar"
+  }
+}

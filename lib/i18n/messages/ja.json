@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "products": "プロダクト",
+    "athletes": "アスリート",
+    "voltage": "ボルテージ",
+    "storeLocator": "店舗検索",
+    "findCan": "缶を探す"
+  },
+  "hero": {
+    "badge": "新フォーミュラ · Drop 016 公開中",
+    "headline1": "走れ、",
+    "headline2": "ザ・",
+    "headline3": "ボルテージ",
+    "description": "正しい成分を正しい振幅で組み上げた高電圧ブレンド。VOLTRAだけが届けられるチャージ。缶を開けろ。地球で一番ラウドなエナジードリンク。",
+    "cta1": "ラインナップを見る",
+    "cta2": "ムービーを観る",
+    "since": "2002年から",
+    "caffeine": "カフェイン",
+    "sugar": "砂糖",
+    "calories": "カロリー",
+    "bvits": "ビタミンB",
+    "nutrition": "栄養成分 · 355ml",
+    "status": "ステータス",
+    "statusReady": "醸造完了"
+  },
+  "lineup": {
+    "section": "§ 01 / ラインナップ",
+    "title": "ザ・ラインナップ。",
+    "subtitle": "騒がしく目覚める6つの方法。"
+  },
+  "stats": {
+    "section": "§ 02 / 缶の中身",
+    "title1": "音を立てた",
+    "title2": "醸造法。"
+  },
+  "athletes": {
+    "section": "§ 03 / ザ・クルー",
+    "title": "騒音をスポンサーする。",
+    "description": "土の上から机の上まで、頂点からアフターショーまで — 物を壊す者たちはボルトを背負う。"
+  },
+  "manifesto": {
+    "section": "§ 04 / マニフェスト",
+    "title1": "クルーに",
+    "title2": "加われ。",
+    "description": "メールを残せば、新フレーバーの先行情報、アスリートドロップ、ツアー日程、深夜3時のラボノートを届ける。スパムは無し。咆哮だけ。",
+    "cta": "登録する",
+    "placeholder": "you@voltra.gg",
+    "nospam": "スパム無し。騒音だけ。",
+    "pack": "クルー",
+    "unsubscribe": "いつでも解除可能。"
+  },
+  "footer": {
+    "rights": "全著作権所有。",
+    "status": "全システム咆哮中"
+  },
+  "search": {
+    "title": "検索",
+    "placeholder": "プロダクト、アスリート、記事…",
+    "results": "件",
+    "noResults": "ヒット無し。もっと大きな言葉で。",
+    "filterBy": "絞り込み",
+    "sport": "スポーツ",
+    "region": "リージョン",
+    "category": "カテゴリ",
+    "type": "タイプ",
+    "all": "すべて",
+    "products": "プロダクト",
+    "athletes": "アスリート",
+    "articles": "記事",
+    "videos": "ビデオ"
+  },
+  "auth": {
+    "signIn": "サインイン",
+    "signUp": "サインアップ",
+    "signOut": "サインアウト",
+    "email": "メール",
+    "password": "パスワード",
+    "name": "名前",
+    "or": "または",
+    "alreadyHave": "アカウントをお持ちですか？",
+    "needAccount": "アカウントが必要ですか？",
+    "continueWith": "続行："
+  },
+  "profile": {
+    "title": "プロフィール",
+    "greeting": "おかえり",
+    "member": "メンバー登録日",
+    "tier": "ティア",
+    "points": "ボルト",
+    "region": "リージョン",
+    "locale": "言語",
+    "newsletter": "ニュースレター",
+    "save": "保存",
+    "saved": "保存しました"
+  },
+  "admin": {
+    "dashboard": "ダッシュボード",
+    "athletes": "アスリート",
+    "products": "プロダクト",
+    "videos": "ビデオ",
+    "articles": "記事",
+    "events": "イベント",
+    "users": "ユーザー",
+    "create": "作成",
+    "edit": "編集",
+    "delete": "削除",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "back": "戻る"
+  }
+}

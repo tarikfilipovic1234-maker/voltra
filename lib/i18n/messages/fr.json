@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "products": "Produits",
+    "athletes": "Athlètes",
+    "voltage": "Voltage",
+    "storeLocator": "Magasins",
+    "findCan": "Trouver une Canette"
+  },
+  "hero": {
+    "badge": "Nouvelle formule · Drop 016 en ligne",
+    "headline1": "Lance",
+    "headline2": "le",
+    "headline3": "Voltage",
+    "description": "Un mélange à haut voltage des bons ingrédients dans la bonne amplitude — la décharge que seul VOLTRA peut livrer. Ouvre une canette. La boisson énergétique la plus bruyante de la planète.",
+    "cta1": "Découvrir la Gamme",
+    "cta2": "Voir le Film",
+    "since": "Depuis 2002",
+    "caffeine": "Caféine",
+    "sugar": "Sucre",
+    "calories": "Calories",
+    "bvits": "Vitamines B",
+    "nutrition": "Nutrition · 500ml",
+    "status": "Statut",
+    "statusReady": "Brassé & Prêt"
+  },
+  "lineup": {
+    "section": "§ 01 / Gamme",
+    "title": "La Gamme.",
+    "subtitle": "Six façons de se réveiller fort."
+  },
+  "stats": {
+    "section": "§ 02 / Dans la Canette",
+    "title1": "Le brassage qui",
+    "title2": "a fait du bruit."
+  },
+  "athletes": {
+    "section": "§ 03 / Le Crew",
+    "title": "On sponsorise le bruit.",
+    "description": "De la terre au bureau, de l'apex à l'after-show — ceux qui cassent des choses portent l'éclair."
+  },
+  "manifesto": {
+    "section": "§ 04 / Manifeste",
+    "title1": "Rejoins",
+    "title2": "le crew.",
+    "description": "Laisse ton email et on t'envoie les avant-premières des saveurs, drops d'athlètes, dates de tournée et notes de labo à 3h du matin. Pas de spam. Juste du rugissement.",
+    "cta": "Inscris-moi",
+    "placeholder": "toi@voltra.gg",
+    "nospam": "Pas de spam. Que du bruit.",
+    "pack": "dans le crew",
+    "unsubscribe": "Désabonnement à tout moment."
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "status": "Tous Systèmes Bruyants"
+  },
+  "search": {
+    "title": "Recherche",
+    "placeholder": "Produits, athlètes, articles…",
+    "results": "résultats",
+    "noResults": "Aucun résultat. Essaie un mot plus fort.",
+    "filterBy": "Filtrer par",
+    "sport": "Sport",
+    "region": "Région",
+    "category": "Catégorie",
+    "type": "Type",
+    "all": "Tous",
+    "products": "Produits",
+    "athletes": "Athlètes",
+    "articles": "Articles",
+    "videos": "Vidéos"
+  },
+  "auth": {
+    "signIn": "Se Connecter",
+    "signUp": "S'inscrire",
+    "signOut": "Se Déconnecter",
+    "email": "Email",
+    "password": "Mot de passe",
+    "name": "Nom",
+    "or": "ou",
+    "alreadyHave": "Déjà un compte ?",
+    "needAccount": "Besoin d'un compte ?",
+    "continueWith": "Continuer avec"
+  },
+  "profile": {
+    "title": "Ton Profil",
+    "greeting": "Bon retour",
+    "member": "Membre depuis",
+    "tier": "Niveau",
+    "points": "Volts",
+    "region": "Région",
+    "locale": "Langue",
+    "newsletter": "Newsletter",
+    "save": "Enregistrer",
+    "saved": "Enregistré"
+  },
+  "admin": {
+    "dashboard": "Tableau",
+    "athletes": "Athlètes",
+    "products": "Produits",
+    "videos": "Vidéos",
+    "articles": "Articles",
+    "events": "Événements",
+    "users": "Utilisateurs",
+    "create": "Créer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "back": "Retour"
+  }
+}

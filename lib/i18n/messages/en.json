@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "products": "Products",
+    "athletes": "Athletes",
+    "voltage": "Voltage",
+    "storeLocator": "Store Locator",
+    "findCan": "Find a Can"
+  },
+  "hero": {
+    "badge": "New formula · Drop 016 live now",
+    "headline1": "Run",
+    "headline2": "The",
+    "headline3": "Voltage",
+    "description": "A high-output blend of the right ingredients at the right amplitude — the kind of charge only VOLTRA can deliver. Crack a can. The loudest energy drink on the planet.",
+    "cta1": "Explore the Lineup",
+    "cta2": "Watch the Film",
+    "since": "Since 2002",
+    "caffeine": "Caffeine",
+    "sugar": "Sugar",
+    "calories": "Calories",
+    "bvits": "B-Vitamins",
+    "nutrition": "Nutrition · 16oz",
+    "status": "Status",
+    "statusReady": "Brewed & Ready"
+  },
+  "lineup": {
+    "section": "§ 01 / Lineup",
+    "title": "The Lineup.",
+    "subtitle": "Six ways to wake up loud."
+  },
+  "stats": {
+    "section": "§ 02 / Inside The Can",
+    "title1": "The brew that",
+    "title2": "made a sound."
+  },
+  "athletes": {
+    "section": "§ 03 / The Crew",
+    "title": "We sponsor noise.",
+    "description": "From the dirt to the desk, from the apex to the after-show — the people who break things wear the bolt."
+  },
+  "manifesto": {
+    "section": "§ 04 / Manifesto",
+    "title1": "Join",
+    "title2": "the crew.",
+    "description": "Drop your email and we'll send first-look at new flavors, athlete drops, tour dates and the occasional 3 AM lab note from the brew. We don't spam. We just roar.",
+    "cta": "Sign Me Up",
+    "placeholder": "you@voltra.gg",
+    "nospam": "No spam. Just noise.",
+    "pack": "in the crew",
+    "unsubscribe": "Unsubscribe anytime."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "status": "All Systems Loud"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search products, athletes, articles…",
+    "results": "results",
+    "noResults": "No matches. Try a louder word.",
+    "filterBy": "Filter by",
+    "sport": "Sport",
+    "region": "Region",
+    "category": "Category",
+    "type": "Type",
+    "all": "All",
+    "products": "Products",
+    "athletes": "Athletes",
+    "articles": "Articles",
+    "videos": "Videos"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "or": "or",
+    "alreadyHave": "Already have an account?",
+    "needAccount": "Need an account?",
+    "continueWith": "Continue with"
+  },
+  "profile": {
+    "title": "Your Profile",
+    "greeting": "Welcome back",
+    "member": "Member since",
+    "tier": "Tier",
+    "points": "Volts",
+    "region": "Region",
+    "locale": "Language",
+    "newsletter": "Newsletter",
+    "save": "Save Changes",
+    "saved": "Saved"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "athletes": "Athletes",
+    "products": "Products",
+    "videos": "Videos",
+    "articles": "Articles",
+    "events": "Events",
+    "users": "Users",
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back"
+  }
+}

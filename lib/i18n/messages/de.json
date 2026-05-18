@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "products": "Produkte",
+    "athletes": "Athleten",
+    "voltage": "Spannung",
+    "storeLocator": "Händler",
+    "findCan": "Dose finden"
+  },
+  "hero": {
+    "badge": "Neue Formel · Drop 016 jetzt live",
+    "headline1": "Dreh",
+    "headline2": "die",
+    "headline3": "Spannung",
+    "description": "Eine Hochspannungs-Mischung der richtigen Zutaten im richtigen Verhältnis — der Buzz, den nur VOLTRA liefert. Reiß eine Dose auf. Der lauteste Energy Drink des Planeten.",
+    "cta1": "Lineup entdecken",
+    "cta2": "Film ansehen",
+    "since": "Seit 2002",
+    "caffeine": "Koffein",
+    "sugar": "Zucker",
+    "calories": "Kalorien",
+    "bvits": "B-Vitamine",
+    "nutrition": "Nährwerte · 500ml",
+    "status": "Status",
+    "statusReady": "Gebraut & Bereit"
+  },
+  "lineup": {
+    "section": "§ 01 / Lineup",
+    "title": "Das Lineup.",
+    "subtitle": "Sechs Wege, laut aufzuwachen."
+  },
+  "stats": {
+    "section": "§ 02 / In der Dose",
+    "title1": "Das Gebräu, das",
+    "title2": "Krach machte."
+  },
+  "athletes": {
+    "section": "§ 03 / Die Crew",
+    "title": "Wir sponsern Lärm.",
+    "description": "Vom Dreck zum Schreibtisch, vom Scheitelpunkt zur Aftershow – die, die Dinge brechen, tragen den Blitz."
+  },
+  "manifesto": {
+    "section": "§ 04 / Manifest",
+    "title1": "Komm",
+    "title2": "in die Crew.",
+    "description": "Lass deine E-Mail da und wir schicken First-Looks auf neue Sorten, Athleten-Drops, Tourtermine und gelegentliche 3-Uhr-Lab-Notes. Wir spammen nicht. Wir brüllen nur.",
+    "cta": "Anmelden",
+    "placeholder": "du@voltra.gg",
+    "nospam": "Kein Spam. Nur Lärm.",
+    "pack": "in der Crew",
+    "unsubscribe": "Jederzeit abbestellen."
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "status": "Alle Systeme laut"
+  },
+  "search": {
+    "title": "Suche",
+    "placeholder": "Produkte, Athleten, Artikel suchen…",
+    "results": "Treffer",
+    "noResults": "Keine Treffer. Versuch ein lauteres Wort.",
+    "filterBy": "Filter",
+    "sport": "Sport",
+    "region": "Region",
+    "category": "Kategorie",
+    "type": "Typ",
+    "all": "Alle",
+    "products": "Produkte",
+    "athletes": "Athleten",
+    "articles": "Artikel",
+    "videos": "Videos"
+  },
+  "auth": {
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "signOut": "Abmelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "name": "Name",
+    "or": "oder",
+    "alreadyHave": "Schon registriert?",
+    "needAccount": "Konto erstellen?",
+    "continueWith": "Weiter mit"
+  },
+  "profile": {
+    "title": "Dein Profil",
+    "greeting": "Willkommen zurück",
+    "member": "Mitglied seit",
+    "tier": "Stufe",
+    "points": "Volts",
+    "region": "Region",
+    "locale": "Sprache",
+    "newsletter": "Newsletter",
+    "save": "Speichern",
+    "saved": "Gespeichert"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "athletes": "Athleten",
+    "products": "Produkte",
+    "videos": "Videos",
+    "articles": "Artikel",
+    "events": "Events",
+    "users": "Nutzer",
+    "create": "Erstellen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "back": "Zurück"
+  }
+}
