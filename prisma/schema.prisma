@@ -1,0 +1,530 @@
+// Monster Energy backend schema
+// SQLite for dev; swap `provider` and DATABASE_URL to switch to Postgres.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// Auth.js v5 standard models (User / Account / Session / VerificationToken)
+// ──────────────────────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+
+  // Credentials
+  passwordHash  String?
+
+  // Profile / community / rewards
+  role          String    @default("USER") // USER | EDITOR | ADMIN
+  locale        String    @default("en")
+  region        String    @default("NA")   // NA | EU | APAC | LATAM | MEA
+  country       String?
+  newsletter    Boolean   @default(false)
+  rewardPoints  Int       @default(0)
+  tier          String    @default("ROOKIE") // ROOKIE | BEAST | LEGEND
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  articles      Article[]      @relation("ArticleAuthor")
+  redemptions   Redemption[]
+  rewardOrders  RewardOrder[]
+  orders        Order[]
+  reviews       Review[]
+  comments      Comment[]
+  reportsFiled  Report[]       @relation("ReportSubmitter")
+
+  banned        Boolean        @default(false)
+  bannedReason  String?
+  bannedAt      DateTime?
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// Content models — managed by the marketing team via /admin
+// ──────────────────────────────────────────────────────────────────────────
+
+model Athlete {
+  id         String   @id @default(cuid())
+  slug       String   @unique
+  name       String
+  sport      String
+  discipline String?
+  country    String   // ISO-2
+  region     String   // NA | EU | APAC | LATAM | MEA
+  bio        String   // long form, supports markdown
+  imageUrl   String?
+  hero       Boolean  @default(false)
+  active     Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  videos     Video[]
+
+  @@index([sport])
+  @@index([region])
+  @@index([active])
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  code        String   @unique   // M-001
+  name        String
+  flavor      String
+  description String
+  caffeineMg  Int      @default(160)
+  sugarG      Int      @default(0)
+  calories    Int      @default(10)
+  juicePct    Int      @default(0)
+  accentColor String   @default("#00ff41")
+  badge       String?
+  // CSV of region codes the product is available in (e.g. "NA,EU,APAC")
+  regions     String   @default("NA,EU,APAC,LATAM,MEA")
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([active])
+}
+
+model Video {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  url         String   // embed URL (YouTube/Vimeo)
+  thumbnail   String?
+  sport       String?
+  region      String?  // restrict by region, null = global
+  featured    Boolean  @default(false)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  athleteId   String?
+  athlete     Athlete? @relation(fields: [athleteId], references: [id], onDelete: SetNull)
+
+  @@index([sport])
+  @@index([region])
+  @@index([featured])
+}
+
+model Article {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  excerpt     String
+  body        String    // markdown
+  cover       String?
+  category    String    @default("News") // News | Athletes | Esports | Music | Motorsport
+  tags        String    @default("")     // CSV
+  locale      String    @default("en")
+  region      String?
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  authorId    String?
+  author      User?     @relation("ArticleAuthor", fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([category])
+  @@index([locale])
+  @@index([published])
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  startsAt    DateTime
+  endsAt      DateTime?
+  location    String
+  region      String
+  country     String?
+  sport       String?
+  imageUrl    String?
+  url         String?
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([region])
+  @@index([startsAt])
+}
+
+model Region {
+  code           String   @id // NA | EU | APAC | LATAM | MEA
+  name           String
+  currency       String   @default("USD")
+  defaultLocale  String   @default("en")
+  // CSV of ISO country codes
+  countries      String
+  active         Boolean  @default(true)
+}
+
+model Locale {
+  code        String  @id // en | es | de | fr | ja | pt
+  name        String
+  nativeName  String
+  rtl         Boolean @default(false)
+  active      Boolean @default(true)
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// Loyalty: Promo codes (printed on cans) + redemption history
+// ──────────────────────────────────────────────────────────────────────────
+
+model PromoCode {
+  id              String       @id @default(cuid())
+  code            String       @unique
+  points          Int          @default(50)
+  maxRedemptions  Int          @default(1)       // 1 = single-use; 999999 = mass-promo
+  redeemedCount   Int          @default(0)
+  source          String       @default("CAN")   // CAN | EVENT | EMAIL | PARTNER
+  campaign        String?
+  expiresAt       DateTime?
+  active          Boolean      @default(true)
+  createdAt       DateTime     @default(now())
+
+  redemptions     Redemption[]
+
+  @@index([active, expiresAt])
+}
+
+model Redemption {
+  id          String    @id @default(cuid())
+  codeId      String
+  userId      String
+  pointsAwarded Int
+  createdAt   DateTime  @default(now())
+
+  code        PromoCode @relation(fields: [codeId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // A single user can only redeem a given code once
+  @@unique([codeId, userId])
+  @@index([userId])
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// Loyalty: Rewards marketplace (points-only spend)
+// ──────────────────────────────────────────────────────────────────────────
+
+model RewardItem {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String
+  imageUrl    String?
+  pointsCost  Int
+  stock       Int      @default(0)
+  category    String   @default("APPAREL") // APPAREL | HEADWEAR | GAMING | ACCESSORIES | DIGITAL
+  tier        String?  // optional gating: ROOKIE | BEAST | LEGEND
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  orderItems  RewardOrderItem[]
+
+  @@index([active])
+  @@index([category])
+}
+
+model RewardOrder {
+  id            String            @id @default(cuid())
+  userId        String
+  pointsTotal   Int
+  status        String            @default("PROCESSING") // PROCESSING | SHIPPED | DELIVERED | CANCELLED
+  shippingName  String?
+  shippingLine1 String?
+  shippingCity  String?
+  shippingZip   String?
+  shippingCountry String?
+  trackingCode  String?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  user          User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items         RewardOrderItem[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+model RewardOrderItem {
+  id              String       @id @default(cuid())
+  orderId         String
+  itemId          String
+  quantity        Int          @default(1)
+  pointsCostEach  Int
+
+  order           RewardOrder  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  item            RewardItem   @relation(fields: [itemId], references: [id])
+
+  @@index([orderId])
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// E-commerce: Merch shop (cash)
+// ──────────────────────────────────────────────────────────────────────────
+
+model MerchProduct {
+  id            String     @id @default(cuid())
+  slug          String     @unique
+  name          String
+  description   String
+  imageUrl      String?
+  priceCents    Int                          // cents
+  currency      String     @default("USD")
+  stock         Int        @default(0)       // committed inventory
+  reserved      Int        @default(0)       // held by in-flight checkouts
+  category      String     @default("APPAREL") // APPAREL | HEADWEAR | ACCESSORIES | COLLAB | DROP
+  dropAt        DateTime?                    // limited-time drop window
+  dropEndsAt    DateTime?
+  active        Boolean    @default(true)
+  featured      Boolean    @default(false)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  orderItems    OrderItem[]
+
+  @@index([active])
+  @@index([category])
+  @@index([dropAt])
+}
+
+model Order {
+  id                 String       @id @default(cuid())
+  userId             String?
+  email              String?
+  status             String       @default("PENDING") // PENDING | PAID | EXPIRED | CANCELLED | FULFILLED
+  subtotalCents      Int
+  shippingCents      Int          @default(0)
+  taxCents           Int          @default(0)
+  totalCents         Int
+  currency           String       @default("USD")
+  stripeSessionId    String?      @unique
+  stripePaymentIntent String?     @unique
+  shippingName       String?
+  shippingLine1      String?
+  shippingCity       String?
+  shippingZip        String?
+  shippingCountry    String?
+  expiresAt          DateTime?    // PENDING orders release stock after this
+  paidAt             DateTime?
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  user               User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  items              OrderItem[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([stripeSessionId])
+}
+
+model OrderItem {
+  id              String       @id @default(cuid())
+  orderId         String
+  productId       String
+  quantity        Int          @default(1)
+  unitPriceCents  Int                      // snapshotted at checkout
+  nameSnapshot    String
+
+  order           Order        @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product         MerchProduct @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// Live streams (Twitch / YouTube / Kick channels we track)
+// ──────────────────────────────────────────────────────────────────────────
+
+// ──────────────────────────────────────────────────────────────────────────
+// Community: reviews, comments, reports
+// ──────────────────────────────────────────────────────────────────────────
+
+model Review {
+  id           String   @id @default(cuid())
+  userId       String
+  targetType   String   // PRODUCT | ATHLETE | ARTICLE
+  targetId     String
+  rating       Int      // 1-5
+  title        String
+  body         String
+  status       String   @default("APPROVED") // PENDING | APPROVED | REJECTED
+  flagCount    Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  moderatedAt  DateTime?
+  moderatedBy  String?
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([targetType, targetId])
+  @@index([status])
+  @@index([userId])
+}
+
+model Comment {
+  id           String   @id @default(cuid())
+  userId       String
+  targetType   String   // ARTICLE | VIDEO | EVENT
+  targetId     String
+  parentId     String?  // for threading
+  body         String
+  status       String   @default("APPROVED") // PENDING | APPROVED | REJECTED
+  flagCount    Int      @default(0)
+  edited       Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  moderatedAt  DateTime?
+  moderatedBy  String?
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parent       Comment? @relation("CommentReplies", fields: [parentId], references: [id], onDelete: SetNull)
+  replies      Comment[] @relation("CommentReplies")
+
+  @@index([targetType, targetId])
+  @@index([parentId])
+  @@index([status])
+}
+
+model Report {
+  id            String   @id @default(cuid())
+  submittedById String
+  contentType   String   // REVIEW | COMMENT
+  contentId     String
+  reason        String   // SPAM | HARASSMENT | HATE | OFFENSIVE | OTHER
+  detail        String?
+  status        String   @default("OPEN")    // OPEN | RESOLVED | DISMISSED
+  resolution    String?  // free-text note from moderator
+  createdAt     DateTime @default(now())
+  resolvedAt    DateTime?
+  resolvedBy    String?
+
+  submittedBy   User     @relation("ReportSubmitter", fields: [submittedById], references: [id], onDelete: Cascade)
+
+  @@index([contentType, contentId])
+  @@index([status])
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// Analytics: pageviews + click events
+// ──────────────────────────────────────────────────────────────────────────
+
+model PageView {
+  id         String   @id @default(cuid())
+  path       String
+  locale     String?
+  region     String?
+  country    String?
+  referer    String?
+  userId     String?
+  sessionId  String?
+  // resource references — populated when a path maps to a specific entity
+  athleteId  String?
+  productId  String?
+  articleId  String?
+  createdAt  DateTime @default(now())
+
+  @@index([path, createdAt])
+  @@index([athleteId])
+  @@index([productId])
+  @@index([articleId])
+  @@index([region, createdAt])
+}
+
+model TrackEvent {
+  id         String   @id @default(cuid())
+  kind       String   // PRODUCT_CLICK | FLAVOR_CLICK | CTA_CLICK | STORE_SEARCH | SEARCH | VIDEO_PLAY
+  productId  String?
+  athleteId  String?
+  value      String?
+  region     String?
+  country    String?
+  userId     String?
+  sessionId  String?
+  createdAt  DateTime @default(now())
+
+  @@index([kind, createdAt])
+  @@index([productId])
+  @@index([athleteId])
+  @@index([region, createdAt])
+}
+
+model Stream {
+  id           String   @id @default(cuid())
+  platform     String   // TWITCH | YOUTUBE | KICK
+  channel      String   // login / handle
+  displayName  String
+  athleteId    String?
+  region       String?
+  category     String?
+  featured     Boolean  @default(false)
+  // Last poll snapshot — refreshed by lib/streams.ts
+  live         Boolean  @default(false)
+  title        String?
+  game         String?
+  viewerCount  Int      @default(0)
+  thumbnail    String?
+  startedAt    DateTime?
+  lastChecked  DateTime?
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([platform, channel])
+  @@index([live, featured])
+}
+
