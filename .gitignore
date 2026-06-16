@@ -54,3 +54,5 @@ next-env.d.ts
 
 # Claude AI settings
 .claude/
+
+.vercel

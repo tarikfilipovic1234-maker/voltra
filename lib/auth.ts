@@ -1,4 +1,5 @@
 import NextAuth from "next-auth";
+import type { Provider } from "next-auth/providers";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
@@ -12,7 +13,7 @@ import { prisma } from "@/lib/prisma";
 // Only enable a provider if its env vars are populated. Lets the UI render
 // social buttons conditionally and avoids the Auth.js "client_id is required"
 // crashes when keys are missing.
-const providers = [
+const providers: Provider[] = [
   Credentials({
     name: "Email",
     credentials: {
