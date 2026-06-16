@@ -92,11 +92,11 @@ export default async function AnalyticsPage({ searchParams }: Props) {
       take: 20,
     }),
     prisma.$queryRawUnsafe<{ day: string; count: bigint | number }[]>(
-      `SELECT strftime('%Y-%m-%d', createdAt) AS day, COUNT(*) AS count
-       FROM PageView
-       WHERE createdAt >= ?
+      `SELECT to_char("createdAt", 'YYYY-MM-DD') AS day, COUNT(*) AS count
+       FROM "PageView"
+       WHERE "createdAt" >= $1
        GROUP BY day ORDER BY day ASC`,
-      since.toISOString()
+      since
     ),
     prisma.trackEvent.groupBy({
       by: ["kind"],
