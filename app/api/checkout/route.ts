@@ -10,7 +10,7 @@ import { getStripe } from "@/lib/stripe";
  *
  * Flow:
  *  1. Build a server-side snapshot of the cart from the cookie
- *  2. Reserve stock atomically (decrement `stock`, increment `reserved`) — fails fast on oversell
+ *  2. Reserve stock atomically (increment `reserved` only if stock - reserved covers it) — fails fast on oversell
  *  3. Persist a PENDING Order record with `expiresAt = +30min`
  *  4. If Stripe configured → create a Checkout Session, redirect there
  *     Else (demo mode)         → mark order PAID immediately and redirect to success page
@@ -27,15 +27,19 @@ export async function POST(req: NextRequest) {
   try {
     await prisma.$transaction(async (tx) => {
       for (const line of cart.lines) {
-        // updateMany returns count; only succeeds when stock - reserved >= quantity
-        const ok = await tx.merchProduct.updateMany({
-          where: {
-            id: line.productId,
-            stock: { gte: line.quantity },
-          },
-          data: { reserved: { increment: line.quantity } },
-        });
-        if (ok.count !== 1) {
+        // Prisma's `where` can't compare two columns, so the availability check
+        // (stock - reserved >= quantity) and the increment happen in one UPDATE.
+        // Postgres locks the row for the update, so two concurrent checkouts
+        // can't both claim the last unit.
+        const updated = await tx.$executeRaw`
+          UPDATE "MerchProduct"
+          SET "reserved" = "reserved" + ${line.quantity},
+              "updatedAt" = NOW()
+          WHERE "id" = ${line.productId}
+            AND "active" = true
+            AND "stock" - "reserved" >= ${line.quantity}
+        `;
+        if (updated !== 1) {
           throw new Error(`Sold out: ${line.product.name}`);
         }
       }
