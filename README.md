@@ -41,9 +41,10 @@ The production site runs on Vercel with a managed Neon Postgres database.
 **Seeded accounts on the live site:**
 
 | Email | Password | Role |
-|---|---|---|
-| `admin@voltra.local` | `VoltMode!2026` | ADMIN — full `/admin` access |
+| --- | --- | --- |
 | `rider@voltra.local` | `RiderVoltRider!` | USER — demo customer (EU, SURGE tier, 350 volts) |
+
+Admin console (`/admin`) credentials are available on request. The demo database is reseeded periodically, so any changes made there are temporary.
 
 Promo codes you can redeem at [`/en/redeem`](https://voltra-gold.vercel.app/en/redeem): `VOLT-2026` · `RUN-IT` · `ANAHEIM-A1` · `ZEDD-VIP`.
 
